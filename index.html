@@ -8,36 +8,40 @@
 </head>
 <body>
   <div class="game-container">
-    <!-- Header -->
+    <!-- Header with Logo and Counters -->
     <div class="game-header">
-      <h1 id="title">Operatie Kerst</h1>
-      <div class="subtitle" id="description">Verzamel alle personen voor je dienst voorbij is.</div>
+      <div class="header-left">
+        <img src="OperatieKerst.svg" alt="Operatie Kerst" class="game-logo" />
+      </div>
+      <div class="header-center">
+        <div class="stat-card timer-card">
+          <div class="stat-value timer-value">
+            <span id="timer">60</span>s
+          </div>
+          <div class="stat-label">Tijd</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">
+            <span id="level">1</span>/11
+          </div>
+          <div class="stat-label">Level</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <h1 id="title">Operatie Kerst</h1>
+      </div>
     </div>
-
-    <!-- HUD Stats -->
-    <div class="hud-container">
-      <div class="stat-card">
-        <div class="stat-value">
-          <span id="score">0</span>/<span id="total">0</span>
-        </div>
-        <div class="stat-label"><span id="collectible-icon">👩‍⚕️</span> Verzameld</div>
-      </div>
-      <div class="stat-card timer-card">
-        <div class="stat-value timer-value">
-          <span id="timer">60</span>s
-        </div>
-        <div class="stat-label">Tijd</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">
-          <span id="level">1</span>/11
-        </div>
-        <div class="stat-label">🏥 Verdieping</div>
-      </div>
+    
+    <!-- Hidden elements for backwards compatibility -->
+    <div style="display: none;">
+      <span id="score">0</span>
+      <span id="total">0</span>
+      <span id="collectible-icon">👩‍⚕️</span>
+      <div class="subtitle" id="description"></div>
     </div>
 
     <!-- Game Canvas -->
-    <canvas id="gameCanvas" width="608" height="480"></canvas>
+    <canvas id="gameCanvas" width="384" height="544"></canvas>
     
     <!-- Mobile D-Pad Controls -->
     <div class="dpad-container" id="dpadContainer">

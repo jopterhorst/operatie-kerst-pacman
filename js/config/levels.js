@@ -1,6 +1,7 @@
 // Level Configuration (map layouts now in mazes.js)
 const LEVEL_CONFIG = {
   1: {
+    characterName: "Gabby",
     title: "Opa Gabby's Ronde",
     description: "Help Gabby de weg vinden rond de afdeling.",
     collectibleIcon: "👴",
@@ -9,6 +10,7 @@ const LEVEL_CONFIG = {
     startTime: 30,
   },
   2: {
+    characterName: "Hoofdzuster Helga",
     title: "Hoofdzuster Helga",
     description: "Organiseer de afdeling met Helga's gezag.",
     collectibleIcon: "👩‍⚕️",
@@ -17,6 +19,7 @@ const LEVEL_CONFIG = {
     startTime: 30,
   },
   3: {
+    characterName: "Dr. Hans Leliveld",
     title: "Dr. Hans Leliveld's Visite",
     description: "Volg Dr. Leliveld op zijn ochtendvisites.",
     collectibleIcon: "👨‍⚕️",
@@ -25,6 +28,7 @@ const LEVEL_CONFIG = {
     startTime: 30,
   },
   4: {
+    characterName: "Floortje",
     title: "Floortje's Eerste Dag",
     description: "Help de stagiaire haar weg te vinden.",
     collectibleIcon: "👩‍⚕️",
@@ -33,6 +37,7 @@ const LEVEL_CONFIG = {
     startTime: 30,
   },
   5: {
+    characterName: "Simon van der Meer",
     title: "Simon van der Meer's Verhaal",
     description: "Help de patiënt zich comfortabel voelen.",
     collectibleIcon: "👨‍🛌",
@@ -41,6 +46,7 @@ const LEVEL_CONFIG = {
     startTime: 30,
   },
   6: {
+    characterName: "Albert Tromp",
     title: "Albert Tromp's Avontuur",
     description: "Navigeer met de energieke patiënt.",
     collectibleIcon: "👨‍🛌",
@@ -49,6 +55,7 @@ const LEVEL_CONFIG = {
     startTime: 30,
   },
   7: {
+    characterName: "Psycholoog Bovenkamp",
     title: "Psycholoog Bovenkamp's Spreekuur",
     description: "Documenteer je bevindingen met Bovenkamp.",
     collectibleIcon: "😐",
@@ -57,6 +64,7 @@ const LEVEL_CONFIG = {
     startTime: 30,
   },
   8: {
+    characterName: "Trijnie",
     title: "Trijnie's Bezoek",
     description: "Begeleiding voor Albert's sterke zus.",
     collectibleIcon: "👩",
@@ -65,6 +73,7 @@ const LEVEL_CONFIG = {
     startTime: 30,
   },
   9: {
+    characterName: "Sjonnie",
     title: "Sjonnie's Avond",
     description: "Feest met Albert's beste vriend.",
     collectibleIcon: "🧢",
@@ -73,6 +82,7 @@ const LEVEL_CONFIG = {
     startTime: 30,
   },
   10: {
+    characterName: "Gijs",
     title: "Gijs' Zoektocht",
     description: "Help Albert's broer de weg vinden.",
     collectibleIcon: "🦋",
@@ -81,6 +91,7 @@ const LEVEL_CONFIG = {
     startTime: 30,
   },
   11: {
+    characterName: "Plokko & Okko",
     title: "De Klinisch Clowns",
     description: "Plezier met Plokko en Okko!",
     collectibleIcon: "🤡",

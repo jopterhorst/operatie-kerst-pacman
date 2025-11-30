@@ -52,24 +52,103 @@ function tileIsWalkable(r, c) {
   return gameState.map[r][c] !== TILE_TYPE.WALL;
 }
 
+// Seeded random number generator for consistent randomization per level
+function seededRandom(seed) {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
+
+// Randomize collectible positions in the maze (seeded by level for consistency)
+function randomizeCollectibles() {
+  // Collect all walkable positions (not walls)
+  const walkableTiles = [];
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      if (gameState.map[r][c] !== TILE_TYPE.WALL) {
+        walkableTiles.push({ r, c });
+      }
+    }
+  }
+
+  // Clear all collectibles first
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      if (gameState.map[r][c] === TILE_TYPE.COLLECTIBLE) {
+        gameState.map[r][c] = TILE_TYPE.PATH;
+      }
+    }
+  }
+
+  // Count how many collectibles we should have (preserve original count)
+  const originalLayout = getMazeLayout(gameState.currentLevel);
+  let collectibleCount = 0;
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      if (originalLayout[r][c] === TILE_TYPE.COLLECTIBLE) collectibleCount++;
+    }
+  }
+
+  // Shuffle using level-based seed for consistency
+  const shuffled = walkableTiles.sort((a, b) => {
+    const seedA = seededRandom(gameState.currentLevel * 1000 + a.r * 100 + a.c);
+    const seedB = seededRandom(gameState.currentLevel * 1000 + b.r * 100 + b.c);
+    return seedA - seedB;
+  });
+  
+  // Place collectibles on shuffled walkable tiles
+  for (let i = 0; i < collectibleCount && i < shuffled.length; i++) {
+    const tile = shuffled[i];
+    gameState.map[tile.r][tile.c] = TILE_TYPE.COLLECTIBLE;
+  }
+}
+
+// Randomize player starting position (seeded by level for consistency)
+function randomizePlayerPosition() {
+  // Collect all walkable positions (not walls)
+  const walkableTiles = [];
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      if (gameState.map[r][c] !== TILE_TYPE.WALL) {
+        walkableTiles.push({ r, c });
+      }
+    }
+  }
+
+  // Pick a starting position using level-based seed
+  if (walkableTiles.length > 0) {
+    const seed = seededRandom(gameState.currentLevel * 5000);
+    const index = Math.floor(seed * walkableTiles.length);
+    const startPos = walkableTiles[index];
+    player.row = startPos.r;
+    player.col = startPos.c;
+  } else {
+    // Fallback to center if somehow no walkable tiles
+    player.row = Math.floor(ROWS / 2);
+    player.col = Math.floor(COLS / 2);
+  }
+}
+
 // Level Management
 function initLevel() {
   const config = getCurrentLevelConfig();
   const mazeLayout = getMazeLayout(gameState.currentLevel);
   gameState.map = cloneMap(mazeLayout);
+  
+  // Randomize positions
+  randomizeCollectibles();
+  randomizePlayerPosition();
+  
   gameState.collectiblesTotal = countCollectibles();
   gameState.collectiblesCollected = 0;
   gameState.shiftTime = config.startTime;
   gameState.moveAccumulator = 0;
   gameState.levelStartTime = performance.now(); // Reset level start time
   
-  player.row = 7;
-  player.col = 9;
   player.currentDir = DIR.NONE;
   player.nextDir = DIR.NONE;
   
-  titleEl.textContent = config.title;
-  descriptionEl.textContent = config.description;
+  titleEl.textContent = config.characterName;
+  descriptionEl.style.display = 'none';
   collectibleIconEl.textContent = config.collectibleIcon;
   
   updateHUD();
@@ -114,7 +193,7 @@ function showScoresScreen() {
       if (score.completed) completedLevels++;
       
       const levelConfig = LEVEL_CONFIG[i];
-      const characterName = levelConfig ? levelConfig.title : `Verdieping ${i}`;
+      const characterName = levelConfig ? levelConfig.characterName : `Personage ${i}`;
       
       const row = document.createElement('div');
       row.className = `score-row ${score.completed ? 'completed' : 'failed'}`;

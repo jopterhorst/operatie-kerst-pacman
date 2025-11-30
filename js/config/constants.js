@@ -1,7 +1,7 @@
 // Game Constants
 const TILE_SIZE = 32;
-const ROWS = 15;
-const COLS = 19;
+const ROWS = 17;
+const COLS = 12;
 
 const TILE_TYPE = {
   WALL: 0,
