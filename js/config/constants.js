@@ -17,4 +17,10 @@ const DIR = {
   RIGHT: { r: 0,  c: 1  },
 };
 
-const MOVE_INTERVAL = 0.14; // Pac-Man style movement interval
+const BASE_MOVE_INTERVAL = 0.14; // Base Pac-Man style movement interval
+
+// Get movement interval for current level (speed increases each level)
+function getMoveIntervalForLevel(level) {
+  const speedBoost = Math.min(level - 1, 8) * 0.01; // Max 8% faster
+  return Math.max(0.08, BASE_MOVE_INTERVAL - speedBoost);
+}

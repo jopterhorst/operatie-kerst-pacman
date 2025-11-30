@@ -55,7 +55,8 @@ function tileIsWalkable(r, c) {
 // Level Management
 function initLevel() {
   const config = getCurrentLevelConfig();
-  gameState.map = cloneMap(config.map);
+  const mazeLayout = getMazeLayout(gameState.currentLevel);
+  gameState.map = cloneMap(mazeLayout);
   gameState.collectiblesTotal = countCollectibles();
   gameState.collectiblesCollected = 0;
   gameState.shiftTime = config.startTime;
@@ -112,10 +113,13 @@ function showScoresScreen() {
       totalTime += score.timeElapsed;
       if (score.completed) completedLevels++;
       
+      const levelConfig = LEVEL_CONFIG[i];
+      const characterName = levelConfig ? levelConfig.title : `Verdieping ${i}`;
+      
       const row = document.createElement('div');
       row.className = `score-row ${score.completed ? 'completed' : 'failed'}`;
       row.innerHTML = `
-        <div class="score-level">Verdieping ${i}</div>
+        <div class="score-level">${characterName}</div>
         <div class="score-count">${score.timeElapsed}s</div>
         <div class="score-status ${score.completed ? 'status-completed' : 'status-failed'}">
           ${score.completed ? '✓ Voltooid' : '✗ Mislukt'}

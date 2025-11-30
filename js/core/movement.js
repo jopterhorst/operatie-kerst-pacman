@@ -1,8 +1,9 @@
 // Movement Logic
 function updateMovement(delta) {
+  const moveInterval = getMoveIntervalForLevel(gameState.currentLevel);
   gameState.moveAccumulator += delta;
-  while (gameState.moveAccumulator >= MOVE_INTERVAL) {
-    gameState.moveAccumulator -= MOVE_INTERVAL;
+  while (gameState.moveAccumulator >= moveInterval) {
+    gameState.moveAccumulator -= moveInterval;
 
     // Try to turn in desired direction if possible
     if (player.nextDir !== player.currentDir) {
