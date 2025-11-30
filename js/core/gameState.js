@@ -160,6 +160,23 @@ function updateHUD() {
   totalEl.textContent = gameState.collectiblesTotal;
   timerEl.textContent = Math.max(0, Math.floor(gameState.shiftTime));
   levelEl.textContent = gameState.currentLevel;
+  
+  // Update timer warning states
+  const timerCard = document.querySelector('.timer-card');
+  const timePercentage = (gameState.shiftTime / LEVEL_DURATION) * 100;
+  
+  if (timePercentage <= 10) {
+    // Critical: 10% or less - flashing red
+    timerCard.classList.remove('timer-warning');
+    timerCard.classList.add('timer-critical');
+  } else if (timePercentage <= 20) {
+    // Warning: 20% or less - red
+    timerCard.classList.remove('timer-critical');
+    timerCard.classList.add('timer-warning');
+  } else {
+    // Normal: more than 20% - yellow
+    timerCard.classList.remove('timer-warning', 'timer-critical');
+  }
 }
 
 function nextLevel() {

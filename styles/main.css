@@ -138,6 +138,28 @@ h1 {
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
+/* Timer warning states */
+.timer-card.timer-warning .stat-value {
+  color: #ff6b6b;
+  text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+  font-weight: 900;
+}
+
+.timer-card.timer-critical .stat-value {
+  color: #ff0000;
+  text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+  animation: timerFlash 0.5s ease-in-out infinite;
+}
+
+@keyframes timerFlash {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
 /* Game Canvas */
 #gameCanvas {
   border-radius: 20px;
