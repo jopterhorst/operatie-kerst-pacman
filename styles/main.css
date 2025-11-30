@@ -42,6 +42,7 @@ body {
   align-items: center;
   padding: 6px 8px 140px 8px;
   gap: 6px;
+  position: relative;
 }
 
 /* Header Section */
@@ -152,6 +153,32 @@ h1 {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   margin: 8px 0;
   aspect-ratio: 384 / 544;
+}
+
+/* Status Overlay */
+.status-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  max-width: 80%;
+}
+
+.status-overlay:not(:empty) {
+  opacity: 1;
 }
 
 /* Mobile D-Pad Styles */
@@ -550,13 +577,13 @@ h1 {
 
   .game-container {
     max-width: 900px;
-    padding: 32px 24px;
+    padding: 12px 24px 32px 24px;
     gap: 20px;
   }
 
   .game-header {
-    padding: 24px 0;
-    margin-top: 80px;
+    padding: 4px 0;
+    margin-top: 60px;
   }
 
   .help {
