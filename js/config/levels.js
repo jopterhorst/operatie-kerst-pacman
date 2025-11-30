@@ -7,7 +7,6 @@ const LEVEL_CONFIG = {
     collectibleIcon: "👴",
     collectibleName: "Wandelaars",
     collectibleSprite: drawGabbySprite,
-    startTime: 30,
   },
   2: {
     characterName: "Hoofdzuster Helga",
@@ -16,7 +15,6 @@ const LEVEL_CONFIG = {
     collectibleIcon: "👩‍⚕️",
     collectibleName: "Taken",
     collectibleSprite: drawHelgaSprite,
-    startTime: 30,
   },
   3: {
     characterName: "Dr. Hans Leliveld",
@@ -25,7 +23,6 @@ const LEVEL_CONFIG = {
     collectibleIcon: "👨‍⚕️",
     collectibleName: "Consulten",
     collectibleSprite: drawDrHansSprite,
-    startTime: 30,
   },
   4: {
     characterName: "Floortje",
@@ -34,7 +31,6 @@ const LEVEL_CONFIG = {
     collectibleIcon: "👩‍⚕️",
     collectibleName: "Stagiaires",
     collectibleSprite: drawFloortjeSprite,
-    startTime: 30,
   },
   5: {
     characterName: "Simon van der Meer",
@@ -43,7 +39,6 @@ const LEVEL_CONFIG = {
     collectibleIcon: "👨‍🛌",
     collectibleName: "Patiënten",
     collectibleSprite: drawSimonSprite,
-    startTime: 30,
   },
   6: {
     characterName: "Albert Tromp",
@@ -52,7 +47,6 @@ const LEVEL_CONFIG = {
     collectibleIcon: "👨‍🛌",
     collectibleName: "Bezoekers",
     collectibleSprite: drawAlbertSprite,
-    startTime: 30,
   },
   7: {
     characterName: "Psycholoog Bovenkamp",
@@ -61,7 +55,6 @@ const LEVEL_CONFIG = {
     collectibleIcon: "😐",
     collectibleName: "Sessies",
     collectibleSprite: drawBovenkampSprite,
-    startTime: 30,
   },
   8: {
     characterName: "Trijnie",
@@ -70,7 +63,6 @@ const LEVEL_CONFIG = {
     collectibleIcon: "👩",
     collectibleName: "Familie",
     collectibleSprite: drawTrijnieSprite,
-    startTime: 30,
   },
   9: {
     characterName: "Sjonnie",
@@ -79,7 +71,6 @@ const LEVEL_CONFIG = {
     collectibleIcon: "🧢",
     collectibleName: "Vrienden",
     collectibleSprite: drawSjonnieSprite,
-    startTime: 30,
   },
   10: {
     characterName: "Gijs",
@@ -88,7 +79,6 @@ const LEVEL_CONFIG = {
     collectibleIcon: "🦋",
     collectibleName: "Familie",
     collectibleSprite: drawGijsSprite,
-    startTime: 30,
   },
   11: {
     characterName: "Plokko & Okko",
@@ -97,7 +87,6 @@ const LEVEL_CONFIG = {
     collectibleIcon: "🤡",
     collectibleName: "Clowns",
     collectibleSprite: drawPlokkoSprite,
-    startTime: 30,
   }
 };
 

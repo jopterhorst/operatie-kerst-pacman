@@ -2,10 +2,8 @@
 
 function initScoresScreen() {
   const restartBtn = document.getElementById('restartBtn');
-  const shareBtn = document.getElementById('shareBtn');
   
   restartBtn.addEventListener('click', handleRestart);
-  shareBtn.addEventListener('click', handleShare);
 }
 
 function handleRestart() {

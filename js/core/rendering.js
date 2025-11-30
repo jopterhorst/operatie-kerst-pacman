@@ -7,7 +7,7 @@ function drawMap() {
       const y = r * TILE_SIZE;
 
       if (gameState.map[r][c] !== TILE_TYPE.WALL) {
-        ctx.fillStyle = "rgba(250, 247, 239, 0.3)";
+        ctx.fillStyle = "rgba(250, 247, 239, 0.5)";
         ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
       }
 

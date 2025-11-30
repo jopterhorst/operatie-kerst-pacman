@@ -140,7 +140,7 @@ function initLevel() {
   
   gameState.collectiblesTotal = countCollectibles();
   gameState.collectiblesCollected = 0;
-  gameState.shiftTime = config.startTime;
+  gameState.shiftTime = LEVEL_DURATION;
   gameState.moveAccumulator = 0;
   gameState.levelStartTime = performance.now(); // Reset level start time
   
