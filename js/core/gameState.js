@@ -196,36 +196,15 @@ function saveLevelScore() {
 function showScoresScreen() {
   gameState.gameOver = true;
   const modal = document.getElementById('scoresModal');
-  const scoresBody = document.getElementById('scoresBody');
+  const scoresTable = document.getElementById('scoresTable');
+  const scoresMessage = document.getElementById('scoresMessage');
+  const scoreTotal = document.getElementById('scoreTotal');
   
-  scoresBody.innerHTML = '';
-  let totalTime = 0;
-  let completedLevels = 0;
+  // Hide table and total, show congratulations message
+  scoresTable.style.display = 'none';
+  scoreTotal.style.display = 'none';
+  scoresMessage.style.display = 'block';
   
-  // Build table rows for each level
-  for (let i = 1; i <= 11; i++) {
-    const score = gameState.levelScores[i];
-    if (score) {
-      totalTime += score.timeElapsed;
-      if (score.completed) completedLevels++;
-      
-      const levelConfig = LEVEL_CONFIG[i];
-      const characterName = levelConfig ? levelConfig.characterName : `Personage ${i}`;
-      
-      const row = document.createElement('div');
-      row.className = `score-row ${score.completed ? 'completed' : 'failed'}`;
-      row.innerHTML = `
-        <div class="score-level">${characterName}</div>
-        <div class="score-count">${score.timeElapsed}s</div>
-        <div class="score-status ${score.completed ? 'status-completed' : 'status-failed'}">
-          ${score.completed ? '✓ Voltooid' : '✗ Mislukt'}
-        </div>
-      `;
-      scoresBody.appendChild(row);
-    }
-  }
-  
-  document.getElementById('totalScore').textContent = `${totalTime}s - ${completedLevels}/11 voltooid`;
   modal.classList.add('active');
 }
 

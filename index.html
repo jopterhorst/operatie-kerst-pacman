@@ -80,9 +80,9 @@
   <div class="scores-modal" id="scoresModal">
     <div class="scores-content">
       <h2>Operatie Kerst</h2>
-      <p class="scores-subtitle">Eindstand</p>
+      <p class="scores-subtitle" id="scoresSubtitle">Eindstand</p>
       
-      <div class="scores-table">
+      <div class="scores-table" id="scoresTable" style="display: none;">
         <div class="scores-header">
           <div>Personage</div>
           <div>Tijd</div>
@@ -93,7 +93,11 @@
         </div>
       </div>
 
-      <div class="scores-total">
+      <div class="scores-message" id="scoresMessage" style="display: none; padding: 20px 0; font-size: 18px; font-weight: 600; color: #1a472a;">
+        Gefeliciteerd, claim je gratis kaartjes voor de musical!
+      </div>
+
+      <div class="scores-total" id="scoreTotal" style="display: none;">
         <div class="total-value" id="totalScore">0s - 0/11 voltooid</div>
       </div>
 
