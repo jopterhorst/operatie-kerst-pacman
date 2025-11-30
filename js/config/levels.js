@@ -6,7 +6,7 @@ const LEVEL_CONFIG = {
     collectibleIcon: "👴",
     collectibleName: "Wandelaars",
     collectibleSprite: drawGabbySprite,
-    startTime: 75,
+    startTime: 30,
   },
   2: {
     title: "Hoofdzuster Helga",
@@ -14,7 +14,7 @@ const LEVEL_CONFIG = {
     collectibleIcon: "👩‍⚕️",
     collectibleName: "Taken",
     collectibleSprite: drawHelgaSprite,
-    startTime: 60,
+    startTime: 30,
   },
   3: {
     title: "Dr. Hans Leliveld's Visite",
@@ -22,7 +22,7 @@ const LEVEL_CONFIG = {
     collectibleIcon: "👨‍⚕️",
     collectibleName: "Consulten",
     collectibleSprite: drawDrHansSprite,
-    startTime: 60,
+    startTime: 30,
   },
   4: {
     title: "Floortje's Eerste Dag",
@@ -30,7 +30,7 @@ const LEVEL_CONFIG = {
     collectibleIcon: "👩‍⚕️",
     collectibleName: "Stagiaires",
     collectibleSprite: drawFloortjeSprite,
-    startTime: 70,
+    startTime: 30,
   },
   5: {
     title: "Simon van der Meer's Verhaal",
@@ -38,7 +38,7 @@ const LEVEL_CONFIG = {
     collectibleIcon: "👨‍🛌",
     collectibleName: "Patiënten",
     collectibleSprite: drawSimonSprite,
-    startTime: 80,
+    startTime: 30,
   },
   6: {
     title: "Albert Tromp's Avontuur",
@@ -46,7 +46,7 @@ const LEVEL_CONFIG = {
     collectibleIcon: "👨‍🛌",
     collectibleName: "Bezoekers",
     collectibleSprite: drawAlbertSprite,
-    startTime: 65,
+    startTime: 30,
   },
   7: {
     title: "Psycholoog Bovenkamp's Spreekuur",
@@ -54,7 +54,7 @@ const LEVEL_CONFIG = {
     collectibleIcon: "😐",
     collectibleName: "Sessies",
     collectibleSprite: drawBovenkampSprite,
-    startTime: 90,
+    startTime: 30,
   },
   8: {
     title: "Trijnie's Bezoek",
@@ -62,7 +62,7 @@ const LEVEL_CONFIG = {
     collectibleIcon: "👩",
     collectibleName: "Familie",
     collectibleSprite: drawTrijnieSprite,
-    startTime: 70,
+    startTime: 30,
   },
   9: {
     title: "Sjonnie's Avond",
@@ -70,7 +70,7 @@ const LEVEL_CONFIG = {
     collectibleIcon: "🧢",
     collectibleName: "Vrienden",
     collectibleSprite: drawSjonnieSprite,
-    startTime: 75,
+    startTime: 30,
   },
   10: {
     title: "Gijs' Zoektocht",
@@ -78,7 +78,7 @@ const LEVEL_CONFIG = {
     collectibleIcon: "🦋",
     collectibleName: "Familie",
     collectibleSprite: drawGijsSprite,
-    startTime: 65,
+    startTime: 30,
   },
   11: {
     title: "De Klinisch Clowns",
@@ -86,7 +86,7 @@ const LEVEL_CONFIG = {
     collectibleIcon: "🤡",
     collectibleName: "Clowns",
     collectibleSprite: drawPlokkoSprite,
-    startTime: 90,
+    startTime: 30,
   }
 };
 
