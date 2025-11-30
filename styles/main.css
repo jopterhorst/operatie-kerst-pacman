@@ -221,7 +221,7 @@ h1 {
 .dpad-grid {
   display: inline-grid;
   grid-template-columns: 56px 56px 56px;
-  grid-template-rows: 56px 56px 56px;
+  grid-template-rows: 56px 56px;
   gap: 8px;
   padding: 12px;
   background: rgba(255, 255, 255, 0.03);
@@ -279,7 +279,7 @@ h1 {
 
 .dpad-down {
   grid-column: 2;
-  grid-row: 3;
+  grid-row: 2;
 }
 
 .dpad-left {
@@ -290,16 +290,6 @@ h1 {
 .dpad-right {
   grid-column: 3;
   grid-row: 2;
-}
-
-.dpad-center {
-  grid-column: 2;
-  grid-row: 2;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  pointer-events: none;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
 }
 
 /* Desktop Help Text */
@@ -577,7 +567,7 @@ h1 {
 
   .dpad-grid {
     grid-template-columns: 64px 64px 64px;
-    grid-template-rows: 64px 64px 64px;
+    grid-template-rows: 64px 64px;
     gap: 10px;
     padding: 16px;
   }
