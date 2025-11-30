@@ -1,31 +1,6 @@
 // Level Configuration
 const LEVEL_CONFIG = {
   1: {
-    title: "Verpleegsters Dash",
-    description: "Verzamel alle verpleegsters voor je dienst afgelopen is.",
-    collectibleIcon: "👩‍⚕️",
-    collectibleName: "Verpleegsters",
-    collectibleSprite: drawNurseSprite,
-    startTime: 60,
-    map: [
-      [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-      [0,2,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,2,0],
-      [0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,0,0,1,0],
-      [0,2,0,0,2,0,0,0,1,0,1,0,0,0,2,0,0,2,0],
-      [0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
-      [0,1,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1,0],
-      [0,2,1,0,1,1,1,1,1,0,1,1,1,1,1,0,1,2,0],
-      [0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,0,0,1,0],
-      [0,1,1,1,1,1,1,2,1,1,1,2,1,1,1,1,1,1,0],
-      [0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,0,0,1,0],
-      [0,2,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,2,0],
-      [0,1,0,0,1,0,0,0,1,0,1,0,0,0,1,0,0,1,0],
-      [0,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,0],
-      [0,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0],
-      [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    ]
-  },
-  2: {
     title: "Opa Gabby's Ronde",
     description: "Help Gabby de weg vinden rond de afdeling.",
     collectibleIcon: "👴",
@@ -50,7 +25,7 @@ const LEVEL_CONFIG = {
       [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ]
   },
-  3: {
+  2: {
     title: "Hoofdzuster Helga",
     description: "Organiseer de afdeling met Helga's gezag.",
     collectibleIcon: "👩‍⚕️",
@@ -75,7 +50,7 @@ const LEVEL_CONFIG = {
       [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ]
   },
-  4: {
+  3: {
     title: "Dr. Hans Leliveld's Visite",
     description: "Volg Dr. Leliveld op zijn ochtendvisites.",
     collectibleIcon: "👨‍⚕️",
@@ -100,7 +75,7 @@ const LEVEL_CONFIG = {
       [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ]
   },
-  5: {
+  4: {
     title: "Floortje's Eerste Dag",
     description: "Help de stagiaire haar weg te vinden.",
     collectibleIcon: "👩‍⚕️",
@@ -125,7 +100,7 @@ const LEVEL_CONFIG = {
       [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ]
   },
-  6: {
+  5: {
     title: "Simon van der Meer's Verhaal",
     description: "Help de patiënt zich comfortabel voelen.",
     collectibleIcon: "👨‍🛌",
@@ -150,7 +125,7 @@ const LEVEL_CONFIG = {
       [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ]
   },
-  7: {
+  6: {
     title: "Albert Tromp's Avontuur",
     description: "Navigeer met de energieke patiënt.",
     collectibleIcon: "👨‍🛌",
@@ -175,7 +150,7 @@ const LEVEL_CONFIG = {
       [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ]
   },
-  8: {
+  7: {
     title: "Psycholoog Bovenkamp's Spreekuur",
     description: "Documenteer je bevindingen met Bovenkamp.",
     collectibleIcon: "😐",
@@ -200,7 +175,7 @@ const LEVEL_CONFIG = {
       [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ]
   },
-  9: {
+  8: {
     title: "Trijnie's Bezoek",
     description: "Begeleiding voor Albert's sterke zus.",
     collectibleIcon: "👩",
@@ -225,7 +200,7 @@ const LEVEL_CONFIG = {
       [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ]
   },
-  10: {
+  9: {
     title: "Sjonnie's Avond",
     description: "Feest met Albert's beste vriend.",
     collectibleIcon: "🧢",
@@ -250,7 +225,7 @@ const LEVEL_CONFIG = {
       [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ]
   },
-  11: {
+  10: {
     title: "Gijs' Zoektocht",
     description: "Help Albert's broer de weg vinden.",
     collectibleIcon: "🦋",
@@ -275,7 +250,7 @@ const LEVEL_CONFIG = {
       [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     ]
   },
-  12: {
+  11: {
     title: "De Klinisch Clowns",
     description: "Plezier met Plokko en Okko!",
     collectibleIcon: "🤡",
