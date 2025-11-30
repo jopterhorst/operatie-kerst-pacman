@@ -7,29 +7,54 @@
   <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
-  <h1 id="title">Operatie Kerst</h1>
-  <div class="subtitle" id="description">Verzamel alle personen voor je dienst voorbij is.</div>
-  <div class="hud">
-    <div class="badge"><span id="collectible-icon">👩‍⚕️</span> Verzameld: <span id="score">0</span>/<span id="total">0</span></div>
-    <div class="badge">⏱ <span id="timer">60</span>s</div>
-    <div class="badge">🏥 Verdieping <span id="level">1</span></div>
-  </div>
-  <canvas id="gameCanvas" width="608" height="480"></canvas>
-  
-  <!-- Mobile D-Pad Controls -->
-  <div class="dpad-container" id="dpadContainer">
-    <div class="dpad-grid">
-      <button class="dpad-button dpad-up" id="dpadUp">▲</button>
-      <button class="dpad-button dpad-down" id="dpadDown">▼</button>
-      <button class="dpad-button dpad-left" id="dpadLeft">◄</button>
-      <button class="dpad-button dpad-right" id="dpadRight">►</button>
-      <div class="dpad-center"></div>
+  <div class="game-container">
+    <!-- Header -->
+    <div class="game-header">
+      <h1 id="title">Operatie Kerst</h1>
+      <div class="subtitle" id="description">Verzamel alle personen voor je dienst voorbij is.</div>
     </div>
-  </div>
 
-  <div class="help">
-    Gebruik <span class="pill">↑</span><span class="pill">↓</span><span class="pill">←</span><span class="pill">→</span> om te bewegen.
-    <div class="status-message" id="status"></div>
+    <!-- HUD Stats -->
+    <div class="hud-container">
+      <div class="stat-card">
+        <div class="stat-value">
+          <span id="score">0</span>/<span id="total">0</span>
+        </div>
+        <div class="stat-label"><span id="collectible-icon">👩‍⚕️</span> Verzameld</div>
+      </div>
+      <div class="stat-card timer-card">
+        <div class="stat-value timer-value">
+          <span id="timer">60</span>s
+        </div>
+        <div class="stat-label">Tijd</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">
+          <span id="level">1</span>/11
+        </div>
+        <div class="stat-label">🏥 Verdieping</div>
+      </div>
+    </div>
+
+    <!-- Game Canvas -->
+    <canvas id="gameCanvas" width="608" height="480"></canvas>
+    
+    <!-- Mobile D-Pad Controls -->
+    <div class="dpad-container" id="dpadContainer">
+      <div class="dpad-grid">
+        <button class="dpad-button dpad-up" id="dpadUp" aria-label="Up">▲</button>
+        <button class="dpad-button dpad-down" id="dpadDown" aria-label="Down">▼</button>
+        <button class="dpad-button dpad-left" id="dpadLeft" aria-label="Left">◄</button>
+        <button class="dpad-button dpad-right" id="dpadRight" aria-label="Right">►</button>
+        <div class="dpad-center"></div>
+      </div>
+    </div>
+
+    <!-- Desktop Help -->
+    <div class="help">
+      Gebruik <span class="pill">↑</span><span class="pill">↓</span><span class="pill">←</span><span class="pill">→</span> om te bewegen.
+      <div class="status-message" id="status"></div>
+    </div>
   </div>
 
   <!-- Game Scripts -->
