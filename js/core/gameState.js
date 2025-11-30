@@ -20,6 +20,9 @@ const gameState = {
   lastTime: performance.now(),
   moveAccumulator: 0,
   levelTransitionDelay: 0,
+  levelScores: {}, // Track scores for each level {levelNumber: {timeElapsed, completed}}
+  gameOver: false,
+  levelStartTime: performance.now(), // Track when level started
 };
 
 const player = {
@@ -57,6 +60,7 @@ function initLevel() {
   gameState.collectiblesCollected = 0;
   gameState.shiftTime = config.startTime;
   gameState.moveAccumulator = 0;
+  gameState.levelStartTime = performance.now(); // Reset level start time
   
   player.row = 7;
   player.col = 9;
@@ -81,5 +85,54 @@ function updateHUD() {
 function nextLevel() {
   gameState.currentLevel++;
   gameState.levelTransitionDelay = 0;
+  initLevel();
+}
+
+function saveLevelScore() {
+  const timeElapsed = Math.round((performance.now() - gameState.levelStartTime) / 1000);
+  gameState.levelScores[gameState.currentLevel] = {
+    timeElapsed: timeElapsed,
+    completed: gameState.collectiblesCollected === gameState.collectiblesTotal
+  };
+}
+
+function showScoresScreen() {
+  gameState.gameOver = true;
+  const modal = document.getElementById('scoresModal');
+  const scoresBody = document.getElementById('scoresBody');
+  
+  scoresBody.innerHTML = '';
+  let totalTime = 0;
+  let completedLevels = 0;
+  
+  // Build table rows for each level
+  for (let i = 1; i <= 11; i++) {
+    const score = gameState.levelScores[i];
+    if (score) {
+      totalTime += score.timeElapsed;
+      if (score.completed) completedLevels++;
+      
+      const row = document.createElement('div');
+      row.className = `score-row ${score.completed ? 'completed' : 'failed'}`;
+      row.innerHTML = `
+        <div class="score-level">Verdieping ${i}</div>
+        <div class="score-count">${score.timeElapsed}s</div>
+        <div class="score-status ${score.completed ? 'status-completed' : 'status-failed'}">
+          ${score.completed ? '✓ Voltooid' : '✗ Mislukt'}
+        </div>
+      `;
+      scoresBody.appendChild(row);
+    }
+  }
+  
+  document.getElementById('totalScore').textContent = `${totalTime}s - ${completedLevels}/11 voltooid`;
+  modal.classList.add('active');
+}
+
+function resetGame() {
+  gameState.currentLevel = 1;
+  gameState.levelScores = {};
+  gameState.gameOver = false;
+  document.getElementById('scoresModal').classList.remove('active');
   initLevel();
 }

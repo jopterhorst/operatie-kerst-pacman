@@ -57,6 +57,33 @@
     </div>
   </div>
 
+  <!-- Scores Modal -->
+  <div class="scores-modal" id="scoresModal">
+    <div class="scores-content">
+      <h2>Operatie Kerst</h2>
+      <p class="scores-subtitle">Eindstand</p>
+      
+      <div class="scores-table">
+        <div class="scores-header">
+          <div>Verdieping</div>
+          <div>Verzameld</div>
+          <div>Status</div>
+        </div>
+        <div class="scores-body" id="scoresBody">
+          <!-- Filled by JavaScript -->
+        </div>
+      </div>
+
+      <div class="scores-total">
+        <div class="total-label">Totaal Verzameld</div>
+        <div class="total-value" id="totalScore">0/0</div>
+      </div>
+
+      <button class="scores-button" id="restartBtn">🔄 Opnieuw Spelen</button>
+      <button class="scores-button secondary" id="shareBtn">📱 Delen</button>
+    </div>
+  </div>
+
   <!-- Game Scripts -->
   <script src="js/config/constants.js"></script>
   <script src="js/sprites/player.js"></script>
@@ -80,6 +107,7 @@
   <script src="js/core/movement.js"></script>
   <script src="js/core/rendering.js"></script>
   <script src="js/core/gameLoop.js"></script>
+  <script src="js/core/scores.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
