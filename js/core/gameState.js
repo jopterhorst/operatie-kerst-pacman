@@ -1,0 +1,85 @@
+// DOM Elements
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+const titleEl = document.getElementById("title");
+const descriptionEl = document.querySelector(".subtitle");
+const scoreEl = document.getElementById("score");
+const totalEl = document.getElementById("total");
+const timerEl = document.getElementById("timer");
+const levelEl = document.getElementById("level");
+const statusEl = document.getElementById("status");
+const collectibleIconEl = document.getElementById("collectible-icon");
+
+// Game State
+const gameState = {
+  currentLevel: 1,
+  map: [],
+  collectiblesTotal: 0,
+  collectiblesCollected: 0,
+  shiftTime: 60,
+  lastTime: performance.now(),
+  moveAccumulator: 0,
+  levelTransitionDelay: 0,
+};
+
+const player = {
+  row: 7,
+  col: 9,
+  currentDir: DIR.NONE,
+  nextDir: DIR.NONE,
+};
+
+// Utility Functions
+function cloneMap(base) {
+  return base.map(row => row.slice());
+}
+
+function countCollectibles() {
+  let count = 0;
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      if (gameState.map[r][c] === TILE_TYPE.COLLECTIBLE) count++;
+    }
+  }
+  return count;
+}
+
+function tileIsWalkable(r, c) {
+  if (r < 0 || c < 0 || r >= ROWS || c >= COLS) return false;
+  return gameState.map[r][c] !== TILE_TYPE.WALL;
+}
+
+// Level Management
+function initLevel() {
+  const config = getCurrentLevelConfig();
+  gameState.map = cloneMap(config.map);
+  gameState.collectiblesTotal = countCollectibles();
+  gameState.collectiblesCollected = 0;
+  gameState.shiftTime = config.startTime;
+  gameState.moveAccumulator = 0;
+  
+  player.row = 7;
+  player.col = 9;
+  player.currentDir = DIR.NONE;
+  player.nextDir = DIR.NONE;
+  
+  titleEl.textContent = config.title;
+  descriptionEl.textContent = config.description;
+  collectibleIconEl.textContent = config.collectibleIcon;
+  
+  updateHUD();
+  statusEl.textContent = "";
+}
+
+function updateHUD() {
+  scoreEl.textContent = gameState.collectiblesCollected;
+  totalEl.textContent = gameState.collectiblesTotal;
+  timerEl.textContent = Math.max(0, Math.floor(gameState.shiftTime));
+  levelEl.textContent = gameState.currentLevel;
+}
+
+function nextLevel() {
+  gameState.currentLevel++;
+  gameState.levelTransitionDelay = 0;
+  initLevel();
+}
