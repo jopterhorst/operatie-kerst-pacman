@@ -27,6 +27,7 @@ function gameLoop(timestamp) {
     gameState.shiftTime -= delta;
     if (gameState.shiftTime < 0) gameState.shiftTime = 0;
     updateMovement(delta);
+    updateGhosts(delta);
     updateHUD();
   } else if (gameState.shiftTime <= 0 && gameState.collectiblesCollected < gameState.collectiblesTotal) {
     // Time ran out before collecting all items
@@ -42,6 +43,7 @@ function gameLoop(timestamp) {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawMap();
+  drawGhosts();
   drawPlayer();
   drawHUDOverlay();
 

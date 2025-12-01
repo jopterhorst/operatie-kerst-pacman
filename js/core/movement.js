@@ -33,9 +33,11 @@ function handleTileCollision(r, c) {
   if (gameState.map[r][c] === TILE_TYPE.COLLECTIBLE) {
     gameState.map[r][c] = TILE_TYPE.PATH;
     gameState.collectiblesCollected++;
+    sound.playCollect();
     updateHUD();
     if (gameState.collectiblesCollected === gameState.collectiblesTotal) {
       statusEl.textContent = "✅ Allemaal verzameld!";
+      sound.playLevelComplete();
       gameState.levelTransitionDelay = 2; // 2 second delay before next level
     }
   }
