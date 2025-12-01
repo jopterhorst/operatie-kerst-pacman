@@ -1,26 +1,29 @@
 // Rendering
 function drawMap() {
-  // First pass: draw semi-transparent background tiles
+  ctx.fillStyle = "#040a1a";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
       const x = c * TILE_SIZE;
       const y = r * TILE_SIZE;
+      const tile = gameState.map[r][c];
 
-      if (gameState.map[r][c] !== TILE_TYPE.WALL) {
-        ctx.fillStyle = "rgba(250, 247, 239, 0.5)";
-        ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
+      if (tile !== TILE_TYPE.WALL) {
+        drawRoundedRect(x + 2, y + 2, TILE_SIZE - 4, TILE_SIZE - 4, 8, "rgba(11, 20, 46, 0.9)");
+        ctx.fillStyle = "rgba(0, 255, 255, 0.05)";
+        ctx.fillRect(x + TILE_SIZE / 2 - 1, y + TILE_SIZE / 2 - 1, 2, 2);
       }
 
-      if (gameState.map[r][c] === TILE_TYPE.COLLECTIBLE) {
+      if (tile === TILE_TYPE.COLLECTIBLE) {
         const config = getCurrentLevelConfig();
         config.collectibleSprite(x, y);
       }
     }
   }
 
-  // Second pass: draw walls as continuous lines
-  ctx.strokeStyle = "#566F48";
-  ctx.lineWidth = 3;
+  ctx.strokeStyle = "#00c7ff";
+  ctx.lineWidth = 4;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
 
@@ -30,13 +33,14 @@ function drawMap() {
         const x = c * TILE_SIZE + TILE_SIZE / 2;
         const y = r * TILE_SIZE + TILE_SIZE / 2;
 
-        // Check neighbors to draw continuous lines
         const up = r > 0 && gameState.map[r - 1][c] === TILE_TYPE.WALL;
         const down = r < ROWS - 1 && gameState.map[r + 1][c] === TILE_TYPE.WALL;
         const left = c > 0 && gameState.map[r][c - 1] === TILE_TYPE.WALL;
         const right = c < COLS - 1 && gameState.map[r][c + 1] === TILE_TYPE.WALL;
 
-        // Draw lines to connected wall tiles
+        ctx.shadowColor = "rgba(0, 199, 255, 0.5)";
+        ctx.shadowBlur = 8;
+
         if (up) {
           ctx.beginPath();
           ctx.moveTo(x, y - TILE_SIZE / 2);
@@ -61,6 +65,8 @@ function drawMap() {
           ctx.lineTo(x + TILE_SIZE / 2, y);
           ctx.stroke();
         }
+
+        ctx.shadowBlur = 0;
       }
     }
   }
@@ -68,6 +74,30 @@ function drawMap() {
 
 function drawPlayer() {
   drawPlayerSprite();
+}
+
+function drawGhosts() {
+  gameState.ghosts.forEach((ghost) => {
+    const x = ghost.col * TILE_SIZE;
+    const y = ghost.row * TILE_SIZE;
+    drawGhostSprite(x, y, ghost.color);
+  });
+}
+
+function drawRoundedRect(x, y, width, height, radius, fillStyle) {
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + width - radius, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+  ctx.lineTo(x + width, y + height - radius);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  ctx.lineTo(x + radius, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+  ctx.closePath();
+  ctx.fillStyle = fillStyle;
+  ctx.fill();
 }
 
 function drawHUDOverlay() {

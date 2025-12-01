@@ -23,6 +23,8 @@ const gameState = {
   levelScores: {}, // Track scores for each level {levelNumber: {timeElapsed, completed}}
   gameOver: false,
   levelStartTime: performance.now(), // Track when level started
+  playerStart: { row: 7, col: 9 },
+  ghosts: [],
 };
 
 const player = {
@@ -121,11 +123,43 @@ function randomizePlayerPosition() {
     const startPos = walkableTiles[index];
     player.row = startPos.r;
     player.col = startPos.c;
+    gameState.playerStart = { row: startPos.r, col: startPos.c };
   } else {
     // Fallback to center if somehow no walkable tiles
     player.row = Math.floor(ROWS / 2);
     player.col = Math.floor(COLS / 2);
+    gameState.playerStart = { row: player.row, col: player.col };
   }
+}
+
+// Setup simple ghosts for the level
+function initGhosts() {
+  const walkableTiles = [];
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      if (gameState.map[r][c] !== TILE_TYPE.WALL) {
+        walkableTiles.push({ r, c });
+      }
+    }
+  }
+
+  const ghostCount = 3;
+  const ghosts = [];
+
+  for (let i = 0; i < ghostCount && walkableTiles.length > 0; i++) {
+    const seed = seededRandom(gameState.currentLevel * 7000 + i * 97);
+    const index = Math.floor(seed * walkableTiles.length);
+    const spawn = walkableTiles.splice(index, 1)[0];
+    ghosts.push({
+      row: spawn.r,
+      col: spawn.c,
+      dir: DIR.NONE,
+      color: GHOST_COLORS[i % GHOST_COLORS.length],
+      moveAccumulator: 0,
+    });
+  }
+
+  gameState.ghosts = ghosts;
 }
 
 // Level Management
@@ -137,6 +171,7 @@ function initLevel() {
   // Randomize positions
   randomizeCollectibles();
   randomizePlayerPosition();
+  initGhosts();
   
   gameState.collectiblesTotal = countCollectibles();
   gameState.collectiblesCollected = 0;
