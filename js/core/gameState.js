@@ -23,6 +23,7 @@ const gameState = {
   levelScores: {}, // Track scores for each level {levelNumber: {timeElapsed, completed}}
   gameOver: false,
   levelStartTime: performance.now(), // Track when level started
+  ghostWarningTimer: 0
 };
 
 const player = {
@@ -128,6 +129,15 @@ function randomizePlayerPosition() {
   }
 }
 
+function handleGhostCatch() {
+  sound.playDeath();
+  gameState.shiftTime = Math.max(0, gameState.shiftTime - 5);
+  statusEl.textContent = "👻 Gepakt! -5s";
+  randomizePlayerPosition();
+  resetGhostPositions();
+  updateHUD();
+}
+
 // Level Management
 function initLevel() {
   const config = getCurrentLevelConfig();
@@ -137,12 +147,14 @@ function initLevel() {
   // Randomize positions
   randomizeCollectibles();
   randomizePlayerPosition();
+  initGhosts();
   
   gameState.collectiblesTotal = countCollectibles();
   gameState.collectiblesCollected = 0;
   gameState.shiftTime = LEVEL_DURATION;
   gameState.moveAccumulator = 0;
   gameState.levelStartTime = performance.now(); // Reset level start time
+  gameState.ghostWarningTimer = 0;
   
   player.currentDir = DIR.NONE;
   player.nextDir = DIR.NONE;

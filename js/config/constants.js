@@ -19,6 +19,7 @@ const DIR = {
 
 const BASE_MOVE_INTERVAL = 0.14; // Base Pac-Man style movement interval
 const LEVEL_DURATION = 30; // Duration in seconds for each level
+const GHOST_MOVE_INTERVAL = 0.16; // Base ghost movement speed
 
 // Get movement interval for current level (speed increases each level)
 function getMoveIntervalForLevel(level) {
