@@ -19,6 +19,9 @@ const DIR = {
 
 const BASE_MOVE_INTERVAL = 0.14; // Base Pac-Man style movement interval
 const LEVEL_DURATION = 30; // Duration in seconds for each level
+const GHOST_MOVE_INTERVAL = 0.22; // Slower than the player to keep things friendly
+const GHOST_TURN_CHANCE = 0.25; // How often ghosts consider changing direction
+const GHOST_COLORS = ["#f04b5f", "#6ac8ff", "#ffd166", "#c59cff"]; // Pac-Man inspired
 
 // Get movement interval for current level (speed increases each level)
 function getMoveIntervalForLevel(level) {
